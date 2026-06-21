@@ -115,6 +115,8 @@
     box-shadow:0 30px 70px -42px rgba(225,29,84,.5);text-align:center}
   .letter p{font-family:"Cormorant Garamond",serif;font-size:clamp(1.15rem,3.4vw,1.5rem);color:#5a4450;margin-bottom:18px;line-height:1.6}
   .letter .sign{font-family:"Caveat",cursive;font-size:clamp(1.8rem,6vw,2.6rem);color:var(--accent);margin-top:10px}
+  .letter-photo{width:clamp(120px,42vw,180px);aspect-ratio:4/5;margin:0 auto 22px;border-radius:14px;overflow:hidden;border:5px solid #fff;box-shadow:0 16px 36px -20px rgba(225,29,84,.5)}
+  .letter-photo img{width:100%;height:100%;object-fit:cover;display:block}
 
   /* ---------- финал ---------- */
   .finale{text-align:center;padding-bottom:clamp(80px,14vw,150px)}
@@ -127,14 +129,24 @@
   .footdate{margin-top:40px;letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;color:var(--accent)}
   .madewith{margin-top:10px;font-size:.78rem;color:var(--muted);font-weight:300}
 
-  /* ---------- бутон музика ---------- */
-  .music-btn{position:fixed;right:18px;bottom:18px;z-index:50;width:52px;height:52px;border-radius:50%;
-    border:1px solid rgba(225,29,84,.35);background:rgba(255,255,255,.88);backdrop-filter:blur(6px);
-    color:var(--accent);cursor:pointer;display:flex;align-items:center;justify-content:center;
-    box-shadow:0 12px 28px -14px rgba(225,29,84,.55);transition:transform .2s}
-  .music-btn:hover{transform:scale(1.08)}
-  .music-btn.on{background:var(--accent);color:#fff;animation:beat 1.6s ease-in-out infinite}
-  .music-btn svg{width:22px;height:22px}
+  /* ---------- бутон „Нашата песен" ---------- */
+  .song-btn{position:fixed;right:18px;bottom:18px;z-index:50;display:inline-flex;align-items:center;gap:10px;
+    padding:11px 16px;border-radius:999px;cursor:pointer;border:1px solid rgba(225,29,84,.28);
+    background:rgba(255,255,255,.92);backdrop-filter:blur(8px);color:var(--accent);
+    font-family:inherit;font-size:.82rem;font-weight:600;letter-spacing:.01em;
+    box-shadow:0 14px 30px -14px rgba(225,29,84,.55);transition:transform .2s,background .3s,color .3s}
+  .song-btn:hover{transform:translateY(-2px) scale(1.03)}
+  .song-btn .heart{width:18px;height:18px;flex:none;animation:beat 1.6s ease-in-out infinite}
+  .song-btn .bars{display:flex;align-items:flex-end;gap:2.5px;height:15px;flex:none}
+  .song-btn .bars i{width:3px;height:4px;background:currentColor;border-radius:2px;transition:height .2s}
+  .song-btn.playing{background:var(--accent);color:#fff;border-color:transparent}
+  .song-btn.playing .bars i{animation:eq .9s ease-in-out infinite}
+  .song-btn.playing .bars i:nth-child(2){animation-delay:.15s}
+  .song-btn.playing .bars i:nth-child(3){animation-delay:.35s}
+  .song-btn.playing .bars i:nth-child(4){animation-delay:.1s}
+  @keyframes eq{0%,100%{height:4px}50%{height:15px}}
+  .song-btn.attract{animation:songpulse 2.2s ease-in-out infinite}
+  @keyframes songpulse{0%,100%{box-shadow:0 14px 30px -14px rgba(225,29,84,.5)}50%{box-shadow:0 16px 44px -6px rgba(225,29,84,.85)}}
 
   /* ---------- избухващи сърца ---------- */
   .spark{position:fixed;z-index:60;pointer-events:none;width:26px;height:26px;transform:translate(-50%,-50%);animation:spark 1.2s ease-out forwards}
@@ -155,7 +167,7 @@
 
   <!-- ======================= HERO ======================= -->
   <header class="hero">
-    <div class="eyebrow">21 юни 2016</div>
+    <div class="eyebrow">21.06.2016 - 21.06.2026</div>
     <h1 class="display">Десет години</h1>
     <div class="with script">с теб</div>
     <p class="sub">Една история, която още се пише.</p>
@@ -188,35 +200,54 @@
           <path id="pathLine" fill="none" stroke="url(#pg)" stroke-width="3" stroke-linecap="round"/>
         </svg>
 
-        <!-- ====== СМЕНИ ТЕКСТА / ГОДИНИТЕ ПО ЖЕЛАНИЕ ====== -->
         <div class="step step--left reveal">
-          <div class="step-photo"><div class="photo-card"><img src="snimki/1.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
-          <div class="step-text"><div class="year">2016</div><h3>Началото</h3><p>Един поглед, една усмивка, и нещо тихо подсказа, че това е за дълго.</p></div>
+          <div class="step-photo"><div class="photo-card"><img src="snimki/1.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Началото</div><p>Помня безгрижните разходки и разговорите, които нямаха край. Без уговорки, без обещания, без заричания. Тогава дори не подозирахме, че десет години по-късно ще празнуваме това.</p></div>
         </div>
 
         <div class="step step--right reveal">
-          <div class="step-photo"><div class="photo-card"><img src="snimki/2.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
-          <div class="step-text"><div class="year">2016</div><h3>Първите стъпки</h3><p>Разходките до късно, разговорите без край, първото „лека нощ".</p></div>
+          <div class="step-photo"><div class="photo-card"><img src="snimki/3.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Твоята грижа</div><p>Ти ми показа нещо рядко и ценно. Грижа, поднесена с внимание и с много, много любов.</p></div>
         </div>
 
         <div class="step step--left reveal">
-          <div class="step-photo"><div class="photo-card"><img src="snimki/3.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
-          <div class="step-text"><div class="year">2018</div><h3>Заедно</h3><p>Научихме се да бъдем един за друг, в хубавото и в трудното.</p></div>
+          <div class="step-photo"><div class="photo-card"><img src="snimki/4.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Нашият свят</div><p>С теб събрах най-ценните си мигове. Обиколихме прекрасни места по света, а тепърва ни предстоят още толкова.</p></div>
         </div>
 
         <div class="step step--right reveal">
-          <div class="step-photo"><div class="photo-card"><img src="snimki/4.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
-          <div class="step-text"><div class="year">2021</div><h3>Нашият дом</h3><p>Стените се напълниха със смях, а тишината стана уютна.</p></div>
+          <div class="step-photo"><div class="photo-card"><img src="snimki/5.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Малките неща</div><p>За малките моменти, които остават в сърцето задълго. Като стария асансьор в нашия хотел във Варна.</p></div>
         </div>
 
         <div class="step step--left reveal">
-          <div class="step-photo"><div class="photo-card"><img src="snimki/5.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
-          <div class="step-text"><div class="year">2024</div><h3>Рамо до рамо</h3><p>Минахме през какво ли не и винаги излизахме по-силни, хванати за ръка.</p></div>
+          <div class="step-photo"><div class="photo-card"><img src="snimki/6.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Спонтанно</div><p>Обожавам спонтанните ни разходки. Дори когато сме на плажа в най-студения ден.</p></div>
         </div>
 
         <div class="step step--right reveal">
-          <div class="step-photo"><div class="photo-card"><img src="snimki/6.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
-          <div class="step-text"><div class="year">2026</div><h3>Днес</h3><p>Десет години по-късно те поглеждам и пак ми спира дъхът.</p></div>
+          <div class="step-photo"><div class="photo-card"><img src="snimki/7.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Заедно към целта</div><p>Обичам те, защото мечтаем и вървим към целите си заедно. Това са едни от най-скъпите ни мигове.</p></div>
+        </div>
+
+        <div class="step step--left reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/8.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">През света</div><p>Когато обикаляме света заедно, по-скоро спринтираме, отколкото да крачим бавно. И не бих го заменил за нищо.</p></div>
+        </div>
+
+        <div class="step step--right reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/9.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Приказна красота</div><p>Ти си невероятно красива, колкото и да го отричаш. Имаш приказна красота, и ето, доказвам ти го тук и сега.</p></div>
+        </div>
+
+        <div class="step step--left reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/10.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Купоните</div><p>А, да... купоните! Обожавам ги, но твоето присъствие е това, което ги прави истински специални.</p></div>
+        </div>
+
+        <div class="step step--right reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/11.jpeg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">Уютът у дома</div><p>Обичам уюта, който носиш. Даряваш ми точно онова, от което един мъж има нужда след дълъг ден. Спокойствие, любов и топлина.</p></div>
         </div>
       </div>
     </div>
@@ -229,10 +260,10 @@
       <h2 class="h2 reveal">На теб, Валерия</h2>
       <!-- ====== СМЕНИ ТЕКСТА НА ПИСМОТО ТУК ====== -->
       <div class="letter reveal">
-        <p>Благодаря ти. За всяка сутрин, в която се събуждам до теб. За търпението, за прегръдките, за смеха, който пълни вкъщи.</p>
-        <p>Благодаря ти, че си до мен, когато е лесно, и още повече, когато не е.</p>
-        <p>Десет години минаха като миг, а имам чувството, че едва сега започваме.</p>
-        <p>Обичам те. Повече от вчера и по-малко от утре.</p>
+        <div class="letter-photo"><img src="snimki/12.jpeg" alt="" onerror="this.style.display='none'"></div>
+        <p>Ти си обичаща и борбена, сърцата и безкомпромисна, силна и отговорна. Ти си най-красивото мъниче на този свят.</p>
+        <p>Десет години до теб минаха като миг, а имам чувството, че едва сега започваме.</p>
+        <p>Благодаря ти, че си част от живота ми. Обичам те, сега и завинаги.</p>
         <div class="sign">Твоят Янко</div>
       </div>
     </div>
@@ -254,10 +285,16 @@
 
 </div>
 
-<!-- по желание: сложи файл muzika.mp3 до index.html и бутонът се появява сам -->
-<audio id="bgAudio" src="muzika.mp3" loop preload="auto"></audio>
-<button class="music-btn" id="musicBtn" hidden aria-label="музика">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V6l10-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
+<!-- Сложи песента като muzika.mp3 (или muzika.m4a) до index.html -->
+<audio id="bgAudio" loop preload="auto">
+  <source src="muzika.mp3" type="audio/mpeg">
+  <source src="muzika.m4a" type="audio/mp4">
+  <source src="muzika.ogg" type="audio/ogg">
+</audio>
+<button class="song-btn attract" id="songBtn" aria-label="Нашата песен">
+  <svg class="heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg>
+  <span class="lbl" id="songLbl">Пусни нашата песен</span>
+  <span class="bars"><i></i><i></i><i></i><i></i></span>
 </button>
 
 <script>
@@ -340,11 +377,46 @@
   const big=document.getElementById('bigHeart');
   big.addEventListener('click',()=>{const r=big.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2);});
 
-  /* музика (бутонът се показва само ако има файл muzika.mp3) */
+  /* музика: тръгва при първо докосване/скрол (телефоните блокират истинско авто-пускане),
+     плюс ръчно пускане/спиране от бутона, с плавно усилване на звука */
   (function(){
-    const audio=document.getElementById('bgAudio'), btn=document.getElementById('musicBtn'); let playing=false;
-    audio.addEventListener('canplaythrough',()=>{btn.hidden=false;},{once:true});
-    btn.addEventListener('click',()=>{ if(playing){audio.pause();}else{audio.play().catch(()=>{});} playing=!playing; btn.classList.toggle('on',playing);});
+    const audio=document.getElementById('bgAudio');
+    const btn=document.getElementById('songBtn');
+    const lbl=document.getElementById('songLbl');
+    let playing=false, faded=false, fadeTimer; const TARGET=0.6;
+
+    function render(){
+      btn.classList.toggle('playing',playing);
+      btn.classList.toggle('attract',!playing);
+      lbl.textContent = playing ? 'Нашата песен' : 'Пусни нашата песен';
+    }
+    function fadeTo(to){
+      clearInterval(fadeTimer);
+      fadeTimer=setInterval(()=>{
+        const d=to-audio.volume;
+        if(Math.abs(d)<0.04){audio.volume=Math.max(0,Math.min(1,to));clearInterval(fadeTimer);return;}
+        audio.volume=Math.max(0,Math.min(1,audio.volume+d*0.08));
+      },40);
+    }
+    function play(){
+      if(!faded) audio.volume=0;
+      audio.play().then(()=>{ playing=true; render(); if(!faded){faded=true; fadeTo(TARGET);} })
+                  .catch(()=>{ playing=false; render(); });
+    }
+    function pause(){ audio.pause(); playing=false; render(); }
+
+    /* ако изобщо няма файл с песен, скрий бутона */
+    setTimeout(()=>{ if(audio.networkState===3){ btn.style.display='none'; } },5000);
+
+    const evs=['pointerdown','touchstart','keydown','scroll'];
+    function cleanup(){ evs.forEach(ev=>window.removeEventListener(ev,firstGesture)); }
+    function firstGesture(e){ if(e&&e.target&&e.target.closest&&e.target.closest('#songBtn'))return; if(!playing)play(); cleanup(); }
+    evs.forEach(ev=>window.addEventListener(ev,firstGesture,{passive:true}));
+
+    btn.addEventListener('click',()=>{ cleanup(); playing?pause():play(); });
+
+    render();
+    play(); /* опит за директно авто-пускане (минава на някои компютри) */
   })();
 </script>
 </body>
