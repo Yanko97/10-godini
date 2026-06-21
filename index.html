@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ====== Заглавие на страницата ====== -->
+<title>Десет години с теб</title>
+
+<!-- ====== Това се показва, когато пуснеш линка във Facebook ====== -->
+<meta property="og:title" content="Десет години с теб">
+<meta property="og:description" content="Една история, която още се пише. Янко и Валерия.">
+<meta property="og:url" content="https://yanko97.github.io/10-godini/">
+<meta property="og:image" content="https://yanko97.github.io/10-godini/snimki/cover.jpg">
+<meta property="og:image:alt" content="Янко и Валерия">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yanko97.github.io/10-godini/snimki/cover.jpg">
+<meta name="theme-color" content="#ffe6f0">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e11d54'%3E%3Cpath d='M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --white:#ffffff;
+    --pink-soft:#ff9ec4;
+    --rose:#ff5c93;
+    --accent:#e11d54;   /* силен романтичен */
+    --purple:#8a1f9b;   /* край на пътя */
+    --ink:#3a2530;
+    --muted:#a87e90;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);
+    background:linear-gradient(180deg,#ffffff 0%,#fff4f8 32%,#ffe7f1 70%,#ffdcea 100%);
+    background-attachment:fixed;overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:"Playfair Display",serif}
+  .serif{font-family:"Cormorant Garamond",serif}
+  .script{font-family:"Caveat",cursive}
+
+  /* ---------- плуващи сърца на фона (по-големи, навсякъде) ---------- */
+  .bg-hearts{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .bg-hearts span{position:absolute;bottom:-60px;animation:rise linear infinite}
+  @keyframes rise{
+    0%{transform:translateY(0) rotate(0);opacity:0}
+    12%{opacity:.4}
+    88%{opacity:.3}
+    100%{transform:translateY(-115vh) rotate(36deg);opacity:0}
+  }
+  .wrap{position:relative;z-index:1}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6vh 24px;position:relative}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(58% 48% at 50% 40%,rgba(255,255,255,.9),rgba(255,255,255,0) 70%)}
+  .eyebrow{font-size:clamp(.78rem,2.4vw,1rem);letter-spacing:.42em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:20px;animation:fadeUp 1.1s .1s both}
+  .hero h1{font-size:clamp(3.2rem,13vw,8rem);font-weight:700;color:var(--ink);line-height:.95;animation:fadeUp 1.2s .25s both}
+  .hero .with{font-size:clamp(2.8rem,12vw,5.4rem);color:var(--accent);margin-top:-.05em;animation:fadeUp 1.2s .45s both}
+  .hero .sub{margin-top:24px;font-size:clamp(1rem,3.4vw,1.3rem);color:var(--muted);font-weight:300;max-width:34ch;animation:fadeUp 1.2s .65s both}
+  .names{margin-top:32px;display:flex;align-items:center;gap:18px;font-size:clamp(1.3rem,5.4vw,2.1rem);color:var(--ink);font-weight:600;animation:fadeUp 1.2s .85s both}
+  .names svg{width:clamp(22px,5.5vw,30px);height:auto;color:var(--accent);animation:beat 1.6s ease-in-out infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.22)}30%{transform:scale(1)}45%{transform:scale(1.14)}}
+  .scrollcue{margin-top:7vh;color:var(--muted);animation:fadeUp 1.2s 1.1s both}
+  .scrollcue small{display:block;letter-spacing:.3em;text-transform:uppercase;font-size:.7rem;margin-bottom:8px}
+  .scrollcue svg{width:24px;height:24px;animation:bob 1.8s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+  /* ---------- секции ---------- */
+  section{padding:clamp(54px,10vw,110px) 24px;position:relative}
+  .inner{max-width:1000px;margin:0 auto}
+  .label{text-align:center;letter-spacing:.34em;text-transform:uppercase;font-size:.76rem;color:var(--accent);font-weight:500;margin-bottom:12px}
+  .h2{text-align:center;font-family:"Playfair Display",serif;font-weight:700;color:var(--ink);font-size:clamp(1.9rem,6vw,3.1rem);line-height:1.15;margin-bottom:14px}
+  .lead{text-align:center;max-width:58ch;margin:0 auto;color:#6c5560;font-weight:300;font-size:clamp(1rem,3vw,1.15rem)}
+
+  /* ---------- ПЪТЯТ (ляво-дясно-ляво-дясно) ---------- */
+  .journey{position:relative;z-index:1;margin-top:60px}
+  .path-svg{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+  #pathLine{filter:drop-shadow(0 2px 7px rgba(225,29,84,.28))}
+
+  .step{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,60px);align-items:center;position:relative;z-index:1;margin:clamp(48px,9vw,100px) 0}
+  .step:first-of-type{margin-top:0}
+  .step:last-of-type{margin-bottom:0}
+  .step--right .step-photo{order:2}
+  .step--right .step-text{order:1;text-align:right}
+  .step-photo{display:flex;justify-content:center}
+  .step .photo-card{max-width:340px;width:100%}
+
+  .step .year{font-family:"Caveat",cursive;font-size:clamp(1.7rem,5.5vw,2.6rem);color:var(--accent);line-height:1}
+  .step h3{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(1.25rem,3.8vw,1.7rem);color:var(--ink);margin:6px 0 10px}
+  .step p{color:#6c5560;font-weight:300}
+  @media(max-width:760px){
+    .step{grid-template-columns:1fr;gap:18px;text-align:center}
+    .step--right .step-photo{order:0}
+    .step--right .step-text{order:0;text-align:center}
+  }
+
+  /* ---------- снимкови рамки ---------- */
+  .photo-card{position:relative;border-radius:16px;overflow:hidden;background:#fff;border:6px solid #fff;
+    box-shadow:0 22px 48px -26px rgba(225,29,84,.5);aspect-ratio:4/5}
+  .photo-card.square{aspect-ratio:1/1}
+  .photo-card::after{content:"Тук ще е вашата снимка";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;color:#fff;font-size:.82rem;letter-spacing:.03em;background:linear-gradient(135deg,var(--rose),var(--accent))}
+  .photo-card img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+  .photo-card .ph-heart{position:absolute;z-index:0;inset:auto 0 16px 0;margin:auto;width:30px;height:30px;color:rgba(255,255,255,.9)}
+
+  /* ---------- писмо ---------- */
+  .letter{max-width:720px;margin:46px auto 0;background:rgba(255,255,255,.66);backdrop-filter:blur(4px);
+    border:1px solid rgba(225,29,84,.22);border-radius:22px;padding:clamp(28px,6vw,56px);
+    box-shadow:0 30px 70px -42px rgba(225,29,84,.5);text-align:center}
+  .letter p{font-family:"Cormorant Garamond",serif;font-size:clamp(1.15rem,3.4vw,1.5rem);color:#5a4450;margin-bottom:18px;line-height:1.6}
+  .letter .sign{font-family:"Caveat",cursive;font-size:clamp(1.8rem,6vw,2.6rem);color:var(--accent);margin-top:10px}
+
+  /* ---------- финал ---------- */
+  .finale{text-align:center;padding-bottom:clamp(80px,14vw,150px)}
+  .finale .h2{margin-bottom:10px}
+  .tap{color:var(--muted);font-weight:300;margin-bottom:24px}
+  .bigheart{background:none;border:none;cursor:pointer;color:var(--accent);width:clamp(110px,30vw,160px);height:auto;
+    filter:drop-shadow(0 16px 30px rgba(225,29,84,.45));animation:beat 1.6s ease-in-out infinite;transition:transform .2s}
+  .bigheart:hover{transform:scale(1.06)}
+  .bigheart:active{transform:scale(.94)}
+  .footdate{margin-top:40px;letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;color:var(--accent)}
+  .madewith{margin-top:10px;font-size:.78rem;color:var(--muted);font-weight:300}
+
+  /* ---------- бутон музика ---------- */
+  .music-btn{position:fixed;right:18px;bottom:18px;z-index:50;width:52px;height:52px;border-radius:50%;
+    border:1px solid rgba(225,29,84,.35);background:rgba(255,255,255,.88);backdrop-filter:blur(6px);
+    color:var(--accent);cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 28px -14px rgba(225,29,84,.55);transition:transform .2s}
+  .music-btn:hover{transform:scale(1.08)}
+  .music-btn.on{background:var(--accent);color:#fff;animation:beat 1.6s ease-in-out infinite}
+  .music-btn svg{width:22px;height:22px}
+
+  /* ---------- избухващи сърца ---------- */
+  .spark{position:fixed;z-index:60;pointer-events:none;width:26px;height:26px;transform:translate(-50%,-50%);animation:spark 1.2s ease-out forwards}
+  @keyframes spark{0%{opacity:1;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(var(--s))}}
+
+  /* ---------- появяване при скрол ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.show{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+
+<body>
+<div class="bg-hearts" id="bgHearts" aria-hidden="true"></div>
+
+<div class="wrap">
+
+  <!-- ======================= HERO ======================= -->
+  <header class="hero">
+    <div class="eyebrow">21 юни 2016</div>
+    <h1 class="display">Десет години</h1>
+    <div class="with script">с теб</div>
+    <p class="sub">Една история, която още се пише.</p>
+    <div class="names">
+      <span>Валерия</span>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg>
+      <span>Янко</span>
+    </div>
+    <div class="scrollcue">
+      <small>надолу</small>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+  </header>
+
+  <!-- ======================= ПЪТЯТ ======================= -->
+  <section>
+    <div class="inner">
+      <div class="label reveal">Нашият път</div>
+      <h2 class="h2 reveal">Стъпка по стъпка, заедно</h2>
+      <p class="lead reveal">Една линия, която не се прекъсва. Точно като нас.</p>
+
+      <div class="journey" id="journey">
+        <svg class="path-svg" id="pathSvg" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e11d54"/>
+              <stop offset="1" stop-color="#8a1f9b"/>
+            </linearGradient>
+          </defs>
+          <path id="pathLine" fill="none" stroke="url(#pg)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+
+        <!-- ====== СМЕНИ ТЕКСТА / ГОДИНИТЕ ПО ЖЕЛАНИЕ ====== -->
+        <div class="step step--left reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/1.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">2016</div><h3>Началото</h3><p>Един поглед, една усмивка, и нещо тихо подсказа, че това е за дълго.</p></div>
+        </div>
+
+        <div class="step step--right reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/2.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">2016</div><h3>Първите стъпки</h3><p>Разходките до късно, разговорите без край, първото „лека нощ".</p></div>
+        </div>
+
+        <div class="step step--left reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/3.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">2018</div><h3>Заедно</h3><p>Научихме се да бъдем един за друг, в хубавото и в трудното.</p></div>
+        </div>
+
+        <div class="step step--right reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/4.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">2021</div><h3>Нашият дом</h3><p>Стените се напълниха със смях, а тишината стана уютна.</p></div>
+        </div>
+
+        <div class="step step--left reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/5.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">2024</div><h3>Рамо до рамо</h3><p>Минахме през какво ли не и винаги излизахме по-силни, хванати за ръка.</p></div>
+        </div>
+
+        <div class="step step--right reveal">
+          <div class="step-photo"><div class="photo-card"><img src="snimki/6.jpg" alt="" onerror="this.style.display='none'"><svg class="ph-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg></div></div>
+          <div class="step-text"><div class="year">2026</div><h3>Днес</h3><p>Десет години по-късно те поглеждам и пак ми спира дъхът.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ПИСМОТО ======================= -->
+  <section>
+    <div class="inner">
+      <div class="label reveal">От сърце</div>
+      <h2 class="h2 reveal">На теб, Валерия</h2>
+      <!-- ====== СМЕНИ ТЕКСТА НА ПИСМОТО ТУК ====== -->
+      <div class="letter reveal">
+        <p>Благодаря ти. За всяка сутрин, в която се събуждам до теб. За търпението, за прегръдките, за смеха, който пълни вкъщи.</p>
+        <p>Благодаря ти, че си до мен, когато е лесно, и още повече, когато не е.</p>
+        <p>Десет години минаха като миг, а имам чувството, че едва сега започваме.</p>
+        <p>Обичам те. Повече от вчера и по-малко от утре.</p>
+        <div class="sign">Твоят Янко</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ФИНАЛ ======================= -->
+  <section class="finale">
+    <div class="inner">
+      <div class="label reveal">И това е само началото</div>
+      <h2 class="h2 reveal">Тук нищо не свършва</h2>
+      <p class="tap reveal">Натисни сърцето</p>
+      <button class="bigheart" id="bigHeart" aria-label="сърце">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg>
+      </button>
+      <div class="footdate">21 юни 2016 ... 21 юни 2026</div>
+      <div class="madewith">с обич</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- по желание: сложи файл muzika.mp3 до index.html и бутонът се появява сам -->
+<audio id="bgAudio" src="muzika.mp3" loop preload="auto"></audio>
+<button class="music-btn" id="musicBtn" hidden aria-label="музика">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 18V6l10-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
+</button>
+
+<script>
+  const heartSVG = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.2C.6 9 1.6 5.6 4.7 4.7 7 4 9 5.2 12 8c3-2.8 5-4 7.3-3.3 3.1.9 4.1 4.3 2.7 7.1C19.5 16.3 12 21 12 21z"/></svg>';
+
+  /* плуващи сърца на фона (по-големи, повече) */
+  (function(){
+    const box=document.getElementById('bgHearts'), colors=['#ff5c93','#ff9ec4','#e11d54','#c2185b'];
+    for(let i=0;i<24;i++){
+      const s=document.createElement('span'); s.innerHTML=heartSVG;
+      const size=18+Math.random()*40;
+      s.style.left=Math.random()*100+'vw';
+      s.style.width=size+'px'; s.style.height=size+'px';
+      s.style.color=colors[i%colors.length];
+      s.style.animationDuration=(10+Math.random()*12)+'s';
+      s.style.animationDelay=(-Math.random()*18)+'s';
+      box.appendChild(s);
+    }
+  })();
+
+  /* появяване при скрол */
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}})},{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* ===== непрекъснатият път зад снимките ===== */
+  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const journey=document.getElementById('journey');
+  const svg=document.getElementById('pathSvg');
+  const line=document.getElementById('pathLine');
+  let pathLen=0;
+
+  function buildPath(){
+    if(!journey) return;
+    const W=journey.clientWidth, H=journey.clientHeight;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    const cards=[...journey.querySelectorAll('.step .photo-card')];
+    if(cards.length<2) return;
+    const pts=cards.map(c=>({x:c.offsetLeft+c.offsetWidth/2, y:c.offsetTop+c.offsetHeight/2}));
+    let d='M '+pts[0].x+' '+(pts[0].y-40);
+    d+=' L '+pts[0].x+' '+pts[0].y;
+    for(let i=0;i<pts.length-1;i++){
+      const a=pts[i], b=pts[i+1], my=(a.y+b.y)/2;
+      d+=' C '+a.x+' '+my+' '+b.x+' '+my+' '+b.x+' '+b.y;
+    }
+    d+=' L '+pts[pts.length-1].x+' '+(pts[pts.length-1].y+40);
+    line.setAttribute('d',d);
+    pathLen=line.getTotalLength();
+    line.style.strokeDasharray=pathLen;
+    if(reduce){line.style.strokeDashoffset=0;} else {drawOnScroll();}
+  }
+  function drawOnScroll(){
+    if(!pathLen||reduce) return;
+    const r=journey.getBoundingClientRect(), vh=window.innerHeight;
+    let p=(vh*0.82 - r.top)/(r.height*0.9);
+    p=Math.min(1,Math.max(0,p));
+    line.style.strokeDashoffset=pathLen*(1-p);
+  }
+  let t; function rebuild(){clearTimeout(t);t=setTimeout(buildPath,120);}
+  window.addEventListener('load',buildPath);
+  window.addEventListener('resize',rebuild);
+  window.addEventListener('scroll',drawOnScroll,{passive:true});
+  journey.querySelectorAll('img').forEach(i=>i.addEventListener('load',rebuild));
+  document.fonts&&document.fonts.ready.then(buildPath);
+  buildPath();
+
+  /* избухващи сърца */
+  function burst(x,y){
+    const colors=['#e11d54','#ff5c93','#8a1f9b','#ff9ec4'];
+    for(let i=0;i<22;i++){
+      const h=document.createElement('span'); h.className='spark'; h.innerHTML=heartSVG;
+      h.style.left=x+'px'; h.style.top=y+'px';
+      const ang=Math.random()*Math.PI*2, dist=70+Math.random()*150;
+      h.style.setProperty('--tx',Math.cos(ang)*dist+'px');
+      h.style.setProperty('--ty',(Math.sin(ang)*dist-50)+'px');
+      h.style.setProperty('--s',(0.5+Math.random()*0.9));
+      h.style.color=colors[i%colors.length];
+      document.body.appendChild(h); setTimeout(()=>h.remove(),1250);
+    }
+  }
+  const big=document.getElementById('bigHeart');
+  big.addEventListener('click',()=>{const r=big.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2);});
+
+  /* музика (бутонът се показва само ако има файл muzika.mp3) */
+  (function(){
+    const audio=document.getElementById('bgAudio'), btn=document.getElementById('musicBtn'); let playing=false;
+    audio.addEventListener('canplaythrough',()=>{btn.hidden=false;},{once:true});
+    btn.addEventListener('click',()=>{ if(playing){audio.pause();}else{audio.play().catch(()=>{});} playing=!playing; btn.classList.toggle('on',playing);});
+  })();
+</script>
+</body>
+</html>
