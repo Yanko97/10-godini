@@ -82,6 +82,7 @@
   /* ---------- ПЪТЯТ (ляво-дясно-ляво-дясно) ---------- */
   .journey{position:relative;z-index:1;margin-top:60px}
   .path-svg{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+  @media(max-width:760px){.path-svg{display:none}}
   #pathLine{filter:drop-shadow(0 2px 7px rgba(225,29,84,.28))}
 
   .step{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,60px);align-items:center;position:relative;z-index:1;margin:clamp(48px,9vw,100px) 0}
@@ -332,14 +333,13 @@
     svg.setAttribute('viewBox','0 0 '+W+' '+H);
     const cards=[...journey.querySelectorAll('.step .photo-card')];
     if(cards.length<2) return;
-    const pts=cards.map(c=>({x:c.offsetLeft+c.offsetWidth/2, y:c.offsetTop+c.offsetHeight/2}));
-    let d='M '+pts[0].x+' '+(pts[0].y-40);
-    d+=' L '+pts[0].x+' '+pts[0].y;
-    for(let i=0;i<pts.length-1;i++){
-      const a=pts[i], b=pts[i+1], my=(a.y+b.y)/2;
-      d+=' C '+a.x+' '+my+' '+b.x+' '+my+' '+b.x+' '+b.y;
+    const s=cards.map(c=>({x:c.offsetLeft+c.offsetWidth/2, top:c.offsetTop, bot:c.offsetTop+c.offsetHeight}));
+    let d='M '+s[0].x+' '+s[0].top+' L '+s[0].x+' '+s[0].bot;
+    for(let i=0;i<s.length-1;i++){
+      const a=s[i], b=s[i+1], my=(a.bot+b.top)/2;
+      d+=' C '+a.x+' '+my+' '+b.x+' '+my+' '+b.x+' '+b.top;
+      d+=' L '+b.x+' '+b.bot;
     }
-    d+=' L '+pts[pts.length-1].x+' '+(pts[pts.length-1].y+40);
     line.setAttribute('d',d);
     pathLen=line.getTotalLength();
     line.style.strokeDasharray=pathLen;
