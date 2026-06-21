@@ -81,7 +81,7 @@
 
   /* ---------- ПЪТЯТ (ляво-дясно-ляво-дясно) ---------- */
   .journey{position:relative;z-index:1;margin-top:60px}
-  .path-svg{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+  .path-svg{display:none}
   @media(max-width:760px){.path-svg{display:none}}
   #pathLine{filter:drop-shadow(0 2px 7px rgba(225,29,84,.28))}
 
@@ -190,7 +190,7 @@
     <div class="inner">
       <div class="label reveal">Нашият път</div>
       <h2 class="h2 reveal">Стъпка по стъпка, заедно</h2>
-      <p class="lead reveal">Една линия, която не се прекъсва. Точно като нас.</p>
+      <p class="lead reveal">Няколко спомена от пътя, който извървяхме заедно.</p>
 
       <div class="journey" id="journey">
         <svg class="path-svg" id="pathSvg" preserveAspectRatio="none" aria-hidden="true">
